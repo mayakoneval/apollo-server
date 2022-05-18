@@ -28,7 +28,6 @@ export interface ApolloServerPluginLandingPageDefaultBaseOptions {
    */
   headers?: Record<string, string>;
 
-  includeCookies?: boolean;
   // For Apollo use only.
   __internal_apolloStudioEnv__?: 'staging' | 'prod';
 }
@@ -40,6 +39,8 @@ export interface ApolloServerPluginNonEmbeddedLandingPageLocalDefaultOptions
    * given a graphRef, or an embedded Sandbox if there is not graphRef provided.
    */
   embed?: false;
+
+  includeCookies?: boolean;
 }
 
 export interface ApolloServerPluginNonEmbeddedLandingPageProductionDefaultOptions
@@ -56,6 +57,8 @@ export interface ApolloServerPluginNonEmbeddedLandingPageProductionDefaultOption
    * given a graphRef, or an embedded Sandbox if there is not graphRef provided.
    */
   embed?: false;
+
+  includeCookies?: boolean;
 }
 
 export interface ApolloServerPluginEmbeddedLandingPageLocalDefaultOptions
@@ -65,6 +68,10 @@ export interface ApolloServerPluginEmbeddedLandingPageLocalDefaultOptions
    * given a graphRef, or an embedded Sandbox if there is not graphRef provided.
    */
   embed: true;
+  /**
+   * Since the embedded landing pages are embedded, we don't allow sending cookies
+   */
+  includeCookies: false;
 }
 
 export interface ApolloServerPluginEmbeddedLandingPageProductionDefaultOptions
@@ -81,6 +88,11 @@ export interface ApolloServerPluginEmbeddedLandingPageProductionDefaultOptions
    * given a graphRef, or an embedded Sandbox if there is not graphRef provided.
    */
   embed: true | ApolloServerPluginEmbeddedLandingPageProductionConfigOptions;
+
+  /**
+   * Since the embedded landing pages are embedded, we don't allow sending cookies
+   */
+  includeCookies: false;
 }
 
 type ApolloServerPluginEmbeddedLandingPageProductionConfigOptions = {
